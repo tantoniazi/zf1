@@ -24,7 +24,7 @@
 /**
  * @see Zend_Cache_Core
  */
-require_once 'Zend/Cache/Core.php';
+#require_once 'Zend/Cache/Core.php';
 
 
 /**
@@ -395,7 +395,7 @@ class Zend_Cache_Frontend_Page extends Zend_Cache_Core
             }
             return '';
         }
-        if (count($var) > 0) {
+        if (is_array($var) && count($var) > 0) {
             return false;
         }
         return '';

@@ -76,15 +76,15 @@ class Zend_Cache_Backend
     public function setDirectives($directives)
     {
         if (!is_array($directives)) Zend_Cache::throwException('Directives parameter must be an array');
-        // Core hack to fix notice: Deprecated functionality: The each() function is deprecated. This message will be suppressed on further calls  in /mnt/www//lib/Zend/Cache/Backend.php on line 79
-        foreach($directives as $name => $value) {
+        foreach ($directives as $name => $value) {
             if (!is_string($name)) {
                 Zend_Cache::throwException("Incorrect option name : $name");
-          }
+            }
             $name = strtolower($name);
             if (array_key_exists($name, $this->_directives)) {
                 $this->_directives[$name] = $value;
             }
+
         }
 
         $this->_loggerSanity();
@@ -255,9 +255,9 @@ class Zend_Cache_Backend
         }
 
         // Create a default logger to the standard output stream
-        require_once 'Zend/Log.php';
-        require_once 'Zend/Log/Writer/Stream.php';
-        require_once 'Zend/Log/Filter/Priority.php';
+        #require_once 'Zend/Log.php';
+        #require_once 'Zend/Log/Writer/Stream.php';
+        #require_once 'Zend/Log/Filter/Priority.php';
         $logger = new Zend_Log(new Zend_Log_Writer_Stream('php://output'));
         $logger->addFilter(new Zend_Log_Filter_Priority(Zend_Log::WARN, '<='));
         $this->_directives['logger'] = $logger;
